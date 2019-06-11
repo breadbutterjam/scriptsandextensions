@@ -1,0 +1,8 @@
+a = $('.todos span .content');
+count = a.length - $('.complete').length
+
+for (let i=0; i<count; i++)
+{
+l = a[s].children[0].textContent;
+a[s].children[0].textContent = l.substr(l.indexOf(" ") + 1)
+}
