@@ -1,0 +1,11 @@
+//a = ['https://www.olystudio.com/annika-chandelier-1.html','https://www.olystudio.com/delphine-buffet.html','https://www.olystudio.com/demian-buffet.html','https://www.olystudio.com/george-cocktail-table-1.html','https://www.olystudio.com/jeremy-console-large-1.html','https://www.olystudio.com/lorca-buffet.html','https://www.olystudio.com/serena-buffet.html','https://www.olystudio.com/thor-buffet.html','https://www.olystudio.com/stella-shelf-small-1.html','https://www.olystudio.com/leif-table-44.html','https://www.olystudio.com/luca-dining-table-48.html','https://www.olystudio.com/orson-dining-table.html','https://www.olystudio.com/colette-dining-chair.html','https://www.olystudio.com/coral-armchair.html','https://www.olystudio.com/cyril-side-chair.html','https://www.olystudio.com/diana-side-chair.html','https://www.olystudio.com/gio-chair.html','https://www.olystudio.com/benjamin-chair.html','https://www.olystudio.com/clover-side-chair.html','https://www.olystudio.com/cyril-side-chair.html','https://www.olystudio.com/dolly-side-chair-driftwood-zebra.html','https://www.olystudio.com/gio-chair.html','https://www.olystudio.com/guy-chair.html','https://www.olystudio.com/hanna-chair.html','https://www.olystudio.com/harrison-chair.html','https://www.olystudio.com/holden-armchair.html','https://www.olystudio.com/holden-side-chair.html','https://www.olystudio.com/james-chair.html','https://www.olystudio.com/jimmy-chair.html','https://www.olystudio.com/kedan-stool.html','https://www.olystudio.com/lars-chair.html','https://www.olystudio.com/layla-chair.html','https://www.olystudio.com/lyra-dining-chair.html','https://www.olystudio.com/michael-chair.html','https://www.olystudio.com/neta-bench.html','https://www.olystudio.com/sophie-armchair.html','https://www.olystudio.com/sophie-side-chair.html','https://www.olystudio.com/tyler-side-chair.html']
+function launchLinks(arrParam)
+{
+    b = document.createElement('a')
+    b.target = "_blank"
+    for (var i=0; i<arrParam.length; i++)
+    {
+        b.href = arrParam[i];
+        b.click();
+    }
+}
