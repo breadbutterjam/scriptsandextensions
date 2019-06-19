@@ -188,3 +188,46 @@ function getTimeObject(strParam)
 
     return t;
 }
+
+
+/* 
+    function taske a time object as parameter t.hrs and t.mins and 
+    returns a string with human readable time 
+*/
+function getStringFromTimeObject(timeObject)
+{
+    let strReturn = "";
+    if (timeObject.hrs > 0)
+    {   
+        strReturn += String(timeObject.hrs) + " hrs "
+    }
+    
+    if (timeObject.mins > 0)
+    {
+        strReturn += String(timeObject.mins) + " mins"
+    }
+
+    return strReturn.trim();
+}
+
+/* 
+    function takes two time objects and adds them, and returns resultant time object
+*/
+function addTime(time1, time2)
+{
+    let retTime = {};
+    retTime.hrs = 0; 
+    retTime.mins = 0;
+
+    retTime.mins = time1.mins + time2.mins;
+    if (retTime.mins > 60)
+    {
+        retTime.hrs += Math.floor(retTime.mins/60)
+        retTime.mins = retTime.mins%60;       
+    }
+
+    retTime.hrs += time1.hrs + time2.hrs;
+
+    return retTime;
+
+}
