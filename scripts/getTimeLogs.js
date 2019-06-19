@@ -78,13 +78,13 @@ function getTimeLogs2()
 
                 //create a new object of that date, and add details in it
                 dataObj[cDate] = {};
-                dataObj[cDate].hrs = cHrs; 
+                dataObj[cDate].hrs = getStringFromTimeObject(getTimeObject(cHrs)); 
                 dataObj[cDate].dec = Number(cHrsDecimal); 
             }
             else
             {
                 // dataObj[cDate].hrs = addHumanReadableTime()
-                dataObj[cDate].hrs += " :+: " + cHrs
+                dataObj[cDate].hrs = getStringFromTimeObject(addTime(getTimeObject(dataObj[cDate].hrs), getTimeObject(cHrs)))
                 dataObj[cDate].dec += Number(cHrsDecimal);
             }
 
@@ -96,7 +96,7 @@ function getTimeLogs2()
         for (var elems in dataObj)
         {
 
-            finData.push([sanitizeCommas(nowDateTime), personName, elems, 'human readable', dataObj[elems].dec])
+            finData.push([sanitizeCommas(nowDateTime), personName, elems, dataObj[elems].hrs, dataObj[elems].dec])
         }        
         
         /* 
@@ -220,7 +220,7 @@ function addTime(time1, time2)
     retTime.mins = 0;
 
     retTime.mins = time1.mins + time2.mins;
-    if (retTime.mins > 60)
+    if (retTime.mins >= 60)
     {
         retTime.hrs += Math.floor(retTime.mins/60)
         retTime.mins = retTime.mins%60;       
