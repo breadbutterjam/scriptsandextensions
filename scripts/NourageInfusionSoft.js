@@ -54,6 +54,9 @@
 
     function checkNextBillAmount()
     {
+        let lastBillDate = document.querySelector("#Last_Bill_Date_data").textContent.trim();
+        let nextBillDate = document.querySelector("#chargedOn").textContent.trim().split("C")[0].trim()
+
         let searchName = document.querySelector("#existing-search-name").textContent.trim()
         let oData = JSON.parse(localStorage.jam);
         let nextPrice = document.querySelector("#nextBillAmtDiv").textContent.trim();
@@ -61,13 +64,13 @@
         if (nextPrice === "$53.95")
         {
             
-            statusToAdd = "All OK"
+            statusToAdd = "next amount $53.95 == All OK"
             
 
         }
         else
         {
-            statusToAdd = "NOT OKAY " + String(nextPrice)
+            statusToAdd = "next amount " + String(nextPrice) + " == NOT OKAY"
             
         }
 
@@ -77,10 +80,44 @@
             // console.log(elem.join().replace(",", " "))
             if (elem.join().replace(",", " ") === searchName)
             {
-                //add status with that search name
-                elem.push(statusToAdd)
+                //add status and last billed date with that search name
+                elem.push("last bill date:: " + lastBillDate);
+                elem.push("next bill date:: " + nextBillDate);
+                elem.push(statusToAdd);
+
             }
         })
 
         localStorage.jam = JSON.stringify(oData)
+    }
+
+    function exportToCSV()
+    {
+        let nw = new Date().toLocaleString().replace(",", ".")
+        discountedCustomerNames = JSON.parse(localStorage.jam).discountedCustomerNames;
+
+        discountedCustomerNames.forEach(function (elem){
+            elem.push(nw);
+            // finData.push(elem);
+        })
+
+        exportArrayParamData(discountedCustomerNames);
+
+    }
+
+    function exportArrayParamData(arrParam)
+    {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        arrParam.forEach(function(rowArray) {
+            let row = rowArray.join(",");
+            csvContent += row + "\r\n";
+        });
+
+        let encodedUri = encodeURI(csvContent);
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "my_data.csv");
+        document.body.appendChild(link); // Required for FF
+
+        link.click();
     }
