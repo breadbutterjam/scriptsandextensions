@@ -231,3 +231,11 @@ function addTime(time1, time2)
     return retTime;
 
 }
+
+/* 
+    function slay it
+*/
+function slayIt()
+{
+    // getTimeLogs2()
+}
