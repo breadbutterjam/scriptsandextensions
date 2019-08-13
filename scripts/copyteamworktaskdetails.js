@@ -1,4 +1,4 @@
-function slayit(createHyperlink)
+function slayit(createHyperlink, prefixParam)
 {
    /* 
    createHyperlink codes
@@ -6,6 +6,7 @@ function slayit(createHyperlink)
    1 - name, link
    2 - name, link, and hyperlink 
    3 - only hyperlink
+   3.2 - hyperlink with parametric prefix
    4 - only link
    5 - custom text, by default '[teamwork task](' + URL + ')'
 
@@ -18,7 +19,7 @@ function slayit(createHyperlink)
    // createHyperlink ? undefined : true
 
 
-   let strToCopy1 = document.querySelectorAll('.task-name')[0].children[1].textContent.trim();
+   let strToCopy1 = document.querySelectorAll('.task-name')[0].children[1].textContent.trim().replace(/"/g, '');
    let strToCopy2 = window.location.href;
    let strToCopy3 = '=HYPERLINK("' + strToCopy2 + '","' + strToCopy1 +'")';
    let x = document.createElement("TEXTAREA");
@@ -26,6 +27,15 @@ function slayit(createHyperlink)
    if (createHyperlink === 3)
    {
       x.value = strToCopy3;
+   }
+   else if (createHyperlink === 3.2){
+      // x.value = strToCopy3;
+      strToCopy3 = '=HYPERLINK("' + strToCopy2 + '","' + prefixParam + strToCopy1 +'")';
+      x.value = strToCopy3;
+   }
+   else if (createHyperlink === 1)
+   {
+      x.value = strToCopy1 + '\n' + strToCopy2;
    }
    else if (createHyperlink === 2)
    {
@@ -45,4 +55,4 @@ function slayit(createHyperlink)
    x.select()
    document.execCommand("copy");
    x.remove();
-}slayit(0);
+}slayit(3);
