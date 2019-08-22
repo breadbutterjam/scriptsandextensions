@@ -59,16 +59,21 @@ function getTimeLogs2()
         
         datesAdded = [];
         dataObj = {};
-        timeRows = whoAllLoggedTime[i].parentElement.getElementsByClassName('timeEntryRow');
+        // timeRows = whoAllLoggedTime[i].parentElement.getElementsByClassName('timeEntryRow');
+        timeRows = whoAllLoggedTime[i].parentElement.querySelectorAll('tr.h-show-hover--parent')
 
         personName = whoAllLoggedTime[i].textContent.trim()
 
         for (k=0; k<timeRows.length; k++)
         {
-            cDate = timeRows[k].getElementsByClassName('date-column')[0].textContent.trim();
-            cHrs = timeRows[k].getElementsByClassName('hms')[0].textContent.trim();
-            cHrsDecimal = timeRows[k].getElementsByClassName('dec')[0].textContent.trim();
+            // cDate = timeRows[k].getElementsByClassName('date-column')[0].textContent.trim();
+            // cHrs = timeRows[k].getElementsByClassName('hms')[0].textContent.trim();
+            // cHrsDecimal = timeRows[k].getElementsByClassName('dec')[0].textContent.trim();
             
+            cDate = timeRows[k].querySelector('.w-time-grid__date-column').textContent.trim();
+            cHrs = timeRows[k].children[8].textContent.trim();
+            cHrsDecimal = timeRows[k].children[9].textContent.trim();
+
             if (datesAdded.indexOf(cDate) == -1)
             {
                 //if entry is not found. this is the first time data for this date is found 
@@ -230,4 +235,12 @@ function addTime(time1, time2)
 
     return retTime;
 
+}
+
+/* 
+    function slay it
+*/
+function slayIt()
+{
+    // getTimeLogs2()
 }
