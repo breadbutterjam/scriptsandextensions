@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="https://i.ibb.co/jgRp9B0/Webp-net-resizeimage.png" type="image/png">
+<script>
+        // alert("A")
+        linksToOpen = ['https://mail.google.com/', 'https://calendar.google.com/', 'https://app.slack.com/client/T066KJ3M2/', 'https://toggl.com/app/', 'https://lastpass.com/'];
+    
+        function onLoaded()
+        {
+            openLinks();
+            /* openYesNo = confirm("Launch?")
+            if (openYesNo)
+            {
+                    openLinks();
+                })
+            } */
+        }
+
+        function openLinks()
+        {
+            linksToOpen.forEach(function(ele){
+                    window.open(ele);
+            })
+        }
+    
+    
+    </script>
+</head>
+<body onload="onLoaded();">
+
+</body>
+</html>
