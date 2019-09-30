@@ -1,3 +1,4 @@
+ptUsers = ["Jayanta Roy", "Avneet Chawla", "Jaimeen Bulsara", "Aloke Maity", "Maria Delgado"]
 function goSlay(arrAssignee, strCompareWithDueDate, removeOthers)
 {
     todos = document.getElementsByClassName('todos')[1].children
@@ -38,3 +39,4 @@ function goSlay(arrAssignee, strCompareWithDueDate, removeOthers)
 
     (removeOthers ? document.querySelectorAll('.notmycircus').forEach(function(ele){ele.remove()}) : console.log("A"))
 }
+goSlay(ptUsers, "jam", true);
